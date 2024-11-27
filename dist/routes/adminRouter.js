@@ -93,3 +93,12 @@ exports.adminRouter.get("/content", (req, res) => __awaiter(void 0, void 0, void
         });
     }
 }));
+exports.adminRouter.get("/users", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const users = yield userSchema_1.User.find({}, "username role").lean(); // Fetch only username and role fields
+        res.status(200).json({ users });
+    }
+    catch (err) {
+        res.status(500).json({ message: "Error fetching users." });
+    }
+}));
