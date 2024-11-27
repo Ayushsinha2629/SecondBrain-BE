@@ -92,3 +92,12 @@ adminRouter.get("/content", async (req, res) => {
         });
     }
 });
+
+adminRouter.get("/users", async (req, res) => {
+    try {
+      const users = await User.find({}, "username role").lean(); // Fetch only username and role fields
+      res.status(200).json({ users });
+    } catch (err) {
+      res.status(500).json({ message: "Error fetching users." });
+    }
+  });
