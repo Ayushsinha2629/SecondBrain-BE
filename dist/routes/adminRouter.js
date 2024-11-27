@@ -20,7 +20,7 @@ exports.adminRouter.use(middleware_1.userMiddleware);
 exports.adminRouter.patch("/users/update-role", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     //@ts-ignore
     const fetchedRole = req.role;
-    if (fetchedRole == "admin") {
+    if (fetchedRole !== "admin") {
         return res.status(411).json({
             message: "Acess Denied, Admins only"
         });

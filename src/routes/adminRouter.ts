@@ -12,7 +12,7 @@ adminRouter.patch("/users/update-role", async (req, res) => {
 
     //@ts-ignore
     const fetchedRole = req.role;
-    if(fetchedRole == "admin"){
+    if(fetchedRole !== "admin"){
         return res.status(411).json({
             message: "Acess Denied, Admins only"
         })
